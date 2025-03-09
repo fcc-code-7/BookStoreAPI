@@ -2,7 +2,7 @@
 {
     public class OrderDetail
     {
-        public Guid Id { get; set; }
+        public Guid OrderDetailId { get; set; }
         public Guid OrderId { get; set; }  // Foreign key
         public Guid BookId { get; set; }  // Foreign key
         public int Quantity { get; set; }

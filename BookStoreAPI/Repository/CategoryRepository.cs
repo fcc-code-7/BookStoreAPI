@@ -61,18 +61,18 @@ namespace BookStoreAPI.Repository
             }
             //Pagination
             var categoriesSkip = (PageNo - 1) * PageSize;
-            return await categories.Skip(categoriesSkip).Take(PageSize).ToListAsync();
+            return await categories.Skip(categoriesSkip).Take(PageSize).Include(c => c.Books).ToListAsync();
         }
 
         public Task<Category?> GetCategoryByIdAsync(Guid id)
         {
-            var category = dbContext.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            var category = dbContext.Categories.Include(c => c.Books).FirstOrDefaultAsync(c => c.CategoryId == id);
             return category;
         }
 
         public async Task<Category> UpdateCategory(Guid id, Category category)
         {
-            var fetchcategory = await dbContext.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            var fetchcategory = await dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == id);
             if (fetchcategory == null)
             {
                 return null;

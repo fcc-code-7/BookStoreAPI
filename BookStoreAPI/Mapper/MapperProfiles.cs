@@ -15,6 +15,12 @@ namespace BookStoreAPI.Mapper
             CreateMap<User, UserDTO>().ReverseMap();
             CreateMap<AddRequestCategoryDTO, Category>().ReverseMap();
             CreateMap<UpdateRequestCategoryDTO, Category>().ReverseMap();
+            CreateMap<AddRequestBookDTO, Book>().ReverseMap();
+            CreateMap<UpdateRequestBookDTO, Book>().ReverseMap();
+            CreateMap<Category, BookCategoryDisplayDTO>().ReverseMap();
+            CreateMap<Book, CategoryBookDisplayDTO>().ReverseMap();
+
+
 
         }
     }

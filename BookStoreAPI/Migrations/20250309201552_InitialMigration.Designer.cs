@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreAPI.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    [Migration("20250309174243_InitialMigration")]
+    [Migration("20250309201552_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -35,10 +35,7 @@ namespace BookStoreAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("CategoryId1")
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ISBN")
@@ -57,7 +54,7 @@ namespace BookStoreAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId1");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Books");
                 });
@@ -334,7 +331,7 @@ namespace BookStoreAPI.Migrations
                 {
                     b.HasOne("BookStoreAPI.Models.Domain.Category", "Category")
                         .WithMany("Books")
-                        .HasForeignKey("CategoryId1")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

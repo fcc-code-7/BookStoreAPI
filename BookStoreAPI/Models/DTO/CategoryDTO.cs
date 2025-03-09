@@ -4,8 +4,8 @@ namespace BookStoreAPI.Models.DTO
 {
     public class CategoryDTO
     {
-        public Guid Id { get; set; }
+        public Guid CategoryId { get; set; }
         public string Name { get; set; }
-        public List<BookStoreDTO?> BookStoreDTOs { get; set; }
+        public List<CategoryBookDisplayDTO> Books { get; set; }  // Navigation property
     }
 }
